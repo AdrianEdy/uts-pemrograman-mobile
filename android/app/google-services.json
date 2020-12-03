@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "835695080842",
+    "firebase_url": "https://reactfirebase-d3801.firebaseio.com",
+    "project_id": "reactfirebase-d3801",
+    "storage_bucket": "reactfirebase-d3801.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835695080842:android:44b726c959aeeba7bc4473",
+        "android_client_info": {
+          "package_name": "com.selfquest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835695080842-p5boq67pvs5v9v0gdj4v56h76c7obn8q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCajwizLtUR0cV1GU9YbSedBjah21anpmw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835695080842-p5boq67pvs5v9v0gdj4v56h76c7obn8q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
