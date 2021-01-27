@@ -1,4 +1,4 @@
-import React, {Component, useContext} from 'react';
+import React, {Component, useContext, useState} from 'react';
 import {
   Text,
   StyleSheet,
@@ -10,27 +10,27 @@ import {
 import GlobalStyles from '../sheets/GlobalSheet';
 import {AuthContext} from '../navigation/AuthProvider';
 
-const LoginScreen = () => {
-  const {logout} = useContext(AuthContext);
+const ProfileScreen = () => {
+  const {user, profile, logout} = useContext(AuthContext);
 
   return (
     <SafeAreaView style={[GlobalStyles.androidSafeArea, styles.container]}>
       <View style={styles.contentContainer}>
         <View style={styles.ppContainer}>
           <Image
+            key={new Date()}
             style={styles.pp}
             source={{
-              uri:
-                'https://ui-avatars.com/api/?name=Adrian+Edy&background=random',
+              uri: `https://ui-avatars.com/api/?name=${profile.fullname}&background=random`,
             }}
           />
-          <Text style={styles.userName}>Adrian Edy</Text>
+          <Text style={styles.userName}>{profile.fullname}</Text>
         </View>
         <View style={styles.profileContainer}>
           <Text style={styles.label}>Phone Number:</Text>
-          <Text style={styles.text}>089518640888</Text>
+          <Text style={styles.text}>{profile.phone_number}</Text>
           <Text style={styles.label}>Email:</Text>
-          <Text style={styles.text}>adrianedypratama@gmail.com</Text>
+          <Text style={styles.text}>{user.email}</Text>
         </View>
       </View>
       <TouchableOpacity style={styles.logoutBtn} onPress={() => logout()}>
@@ -40,7 +40,7 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default ProfileScreen;
 
 const styles = StyleSheet.create({
   container: {
