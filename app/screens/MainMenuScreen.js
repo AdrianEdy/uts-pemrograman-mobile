@@ -87,6 +87,7 @@ const MainMenuScreen = ({navigation}) => {
       );
     });
 
+  if (!(user && profile)) return null;
   return (
     <SafeAreaView style={[GlobalStyles.androidSafeArea, styles.container]}>
       <View style={styles.contentContainer}>

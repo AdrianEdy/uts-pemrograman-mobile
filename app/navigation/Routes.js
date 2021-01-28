@@ -8,11 +8,10 @@ import AuthStack from './AuthStack';
 import AppStack from './AppStack';
 
 const Routes = () => {
-  const {user, setUser, setProfile} = useContext(AuthContext);
+  const {user, setUser, setProfile, registering} = useContext(AuthContext);
   const [initializing, setInitializing] = useState(true);
 
   const onAuthStateChanged = (user) => {
-    setUser(user);
     if (user) {
       firestore()
         .collection('Users')
@@ -22,7 +21,10 @@ const Routes = () => {
           setProfile(querySnapshot.data());
           if (initializing) setInitializing(false);
         });
+    } else {
+      if (initializing) setInitializing(false);
     }
+    setUser(user);
   };
 
   useEffect(() => {
@@ -30,7 +32,7 @@ const Routes = () => {
     return subscriber;
   }, []);
 
-  if (initializing) return null;
+  if (initializing && registering) return null;
 
   return (
     <NavigationContainer>

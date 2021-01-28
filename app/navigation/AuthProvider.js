@@ -7,10 +7,12 @@ export const AuthContext = createContext();
 export const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
+  const [registering, setRegistering] = useState(false);
 
   return (
     <AuthContext.Provider
       value={{
+        registering,
         user,
         setUser,
         profile,
@@ -23,10 +25,10 @@ export const AuthProvider = ({children}) => {
           }
         },
         register: async (email, password, name, phone) => {
+          setRegistering(true);
           auth()
             .createUserWithEmailAndPassword(email, password)
             .then((querySnapshot) => {
-              console.log(querySnapshot.user.uid);
               firestore()
                 .collection('Users')
                 .doc(querySnapshot.user.uid)
@@ -36,7 +38,7 @@ export const AuthProvider = ({children}) => {
                   email: email,
                 })
                 .then(() => {
-                  console.log('User added!');
+                  setRegistering(false);
                 });
             });
         },
